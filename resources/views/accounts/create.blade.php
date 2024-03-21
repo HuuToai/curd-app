@@ -10,6 +10,7 @@
             <form action="{{ route('accounts.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
+
                     <input type="text" class="form-control" name="username" placeholder="Username" required>
                 </div>
                 <div class="mb-3">
