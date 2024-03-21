@@ -23,6 +23,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Thêm Tài Khoản</button>
             </form>
+            <a href="{{ route('accounts.index') }}" class="btn btn-secondary">danh sách tài khoản</a>
         </div>
     </div>
 </div>
