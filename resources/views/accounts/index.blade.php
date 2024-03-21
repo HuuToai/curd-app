@@ -13,6 +13,7 @@
         <th scope="col">Fullname</th>
         <th scope="col">Age</th>
         <th scope="col">Address</th>
+        <th scope="col">Options</th>
     </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -23,6 +24,14 @@
                 <td>{{ $account->fullname }}</td>
                 <td>{{ $account->age }}</td>
                 <td>{{ $account->address }}</td>
+                <td>
+                    <a href="{{ route('accounts.edit', $account->id) }}" class="btn btn-sm btn-outline-primary">Sửa</a>
+                    <form action="{{ route('accounts.destroy', $account->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này?')">Xóa</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </tbody>

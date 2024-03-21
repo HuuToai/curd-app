@@ -48,4 +48,18 @@ class AccountController extends Controller
             return redirect()->back()->withErrors(['error' => 'Có lỗi xảy ra. Vui lòng thử lại sau.']);
         }
     }
+
+    public function destroy($id)
+    {
+        $account = Account::find($id);
+        if (!$account) {
+            return redirect()->back()->withErrors(['error' => 'Không tìm thấy tài khoản']);
+        }
+        $account->delete();
+        return redirect()->back()->with('success', 'Tài khoản đã được xóa thành công!');
+    }
+    public function edit(Account $account)
+    {
+        return view('accounts.edit', compact('account'));
+    }
 }
