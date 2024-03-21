@@ -62,4 +62,31 @@ class AccountController extends Controller
     {
         return view('accounts.edit', compact('account'));
     }
+
+    public function update(Request $request, Account $account)
+    {
+        // Validate input
+        $request->validate([
+            'username' => 'required|unique:accounts,username,' . $account->id,
+            'fullname' => 'required',
+            'age' => 'required|numeric',
+            'address' => 'required',
+        ]);
+
+        try {
+            // Update account
+            $account->update([
+                'username' => $request->input('username'),
+                'fullname' => $request->input('fullname'),
+                'age' => $request->input('age'),
+                'address' => $request->input('address'),
+            ]);
+
+            // Redirect back with success message
+            return redirect()->route('accounts.index')->with('success', 'Tài khoản đã được cập nhật thành công!');
+        } catch (\Exception $e) {
+            // Redirect back with error message if any exception occurs
+            return redirect()->back()->withErrors(['error' => 'Có lỗi xảy ra. Vui lòng thử lại sau.']);
+        }
+    }
 }
