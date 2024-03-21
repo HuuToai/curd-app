@@ -10,3 +10,7 @@ Route::get('/accounts', [AccountController::class, 'index'])->name('accounts.ind
 Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
 
 Route::post('/accounts/create', [AccountController::class, 'store'])->name('accounts.store');
+
+
+Route::delete('/accounts/{id}', [AccountController::class, 'destroy'])->name('accounts.destroy');
+Route::get('/accounts/{account}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
