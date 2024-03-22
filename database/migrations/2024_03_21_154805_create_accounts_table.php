@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id(); // Tự động tăng và khóa chính
             $table->string('username'); // Trường text
             $table->string('fullname'); // Trường text
+            $table->string('avatar')->nullable(); // Thêm cột avatar để lưu trữ đường dẫn của ảnh, cho phép giá trị null
             $table->integer('age'); // Trường integer
             $table->text('address'); // Trường text
             $table->timestamps(); // Tự động thêm cột created_at và updated_at
+            $table->softDeletes(); // Thêm cột deleted_at cho xóa mềm
         });
     }
 

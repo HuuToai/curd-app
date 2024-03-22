@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <h2>Thêm mới tài khoản</h2>
 
-            <form action="{{ route('accounts.store') }}" method="POST">
+            <form action="{{ route('accounts.store') }}" method="POST"enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
 
@@ -17,6 +17,9 @@
                     <input type="text" class="form-control" name="fullname" placeholder="Fullname" required>
                 </div>
                 <div class="mb-3">
+                    <input type="file" class="form-control" name="avatar" accept="image/*" required>
+                </div>
+                <div class="mb-3">
                     <input type="number" class="form-control" name="age" max="100" min="1" placeholder="Age" required>
                 </div>
                 <div class="mb-3">
@@ -24,6 +27,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Thêm Tài Khoản</button>
             </form>
+            <a href="{{ route('accounts.index') }}" class="btn btn-secondary">danh sách tài khoản</a>
         </div>
     </div>
 </div>
